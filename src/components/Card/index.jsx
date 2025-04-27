@@ -11,7 +11,7 @@ export default function Card({
   favorito = false,
   dataLancamento,
   quantidadePersonagens,
-  rotaEpisodio = "https://google.com",
+  rotaEpisodio = '/episodio/teste',
 }) {
   return (
     <div className="col-xl-3 col-md-6 mb-4">
