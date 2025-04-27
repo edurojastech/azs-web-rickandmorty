@@ -1,11 +1,14 @@
 import "./style.css";
 import { Link } from "react-router-dom";
 import IconCard from "../../assets/icons/iconCard";
+import favoritoOff from "../../assets/favorito-off.png";
+import favoritoOn from "../../assets/favorito-on.png";
+
 
 export default function Card({
   episodio,
   nomeEpisodio,
-  temporada,
+  favorito = false,
   dataLancamento,
   quantidadePersonagens,
   rotaEpisodio = "https://google.com",
@@ -22,9 +25,17 @@ export default function Card({
               <h6 className="mb-0">{episodio}</h6>
             </div>
           </div>
-          <div className="badge">
-            {" "}
-            <span>{temporada}</span>{" "}
+          <div className="d-flex pt-1">
+            {/* <div className="badge">
+              <span>{temporada}</span>
+            </div> */}
+            <img
+              src={favorito ? favoritoOn : favoritoOff}
+              alt="favorito"
+              width={28}
+              height={28}
+              style={{ cursor: "pointer" }}
+            />
           </div>
         </div>
         <div
@@ -34,13 +45,18 @@ export default function Card({
           <h3 className="heading">{nomeEpisodio}</h3>
           <div className="d-flex flex-column gap-2">
             <span className="text1">
-              Quantidade Personagens: <span className="text2">{quantidadePersonagens}</span>
+              Quantidade Personagens:{" "}
+              <span className="text2">{quantidadePersonagens}</span>
             </span>{" "}
             <span className="text1">
               Lançamento: <span className="text2">{dataLancamento}</span>
             </span>{" "}
           </div>
-          <Link to={rotaEpisodio} target="_blank" className="btn btn-dark btn-sm">
+          <Link
+            to={rotaEpisodio}
+            target="_blank"
+            className="btn btn-dark btn-sm"
+          >
             Ver detalhes do episodio
           </Link>
         </div>

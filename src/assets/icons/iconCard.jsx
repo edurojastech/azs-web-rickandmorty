@@ -4,8 +4,8 @@ export default function IconCard() {
       xmlns="http://www.w3.org/2000/svg"
       x="0px"
       y="0px"
-      width="100"
-      height="80"
+      width="60"
+      height="60"
       viewBox="0 0 100 100"
     >
       <polygon
