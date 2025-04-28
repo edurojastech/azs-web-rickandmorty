@@ -2,27 +2,20 @@ import { Link, useParams  } from "react-router-dom"
 import { useQuery } from "@apollo/client";
 import { getEpisodesById } from "../../API/getEpisodioId";
 import './style.css'
+import Header from "../../components/Header";
 
 export default function Episodio() {
   const { id } = useParams();;
   const { data, loading, error } = useQuery(getEpisodesById(id))
-
-  if (loading) return <p>Carregando...</p>;
-  if (error) return <p>Erro: {error.message}</p>;
+  if (loading) return <p className='text-center text-white'>Carregando...</p>
+  if (error) return <p>Erro: {error.message}</p>
   return (
     <>
-      <header
-        className="text-center py-5 mb-4"
-        style={{ backgroundColor: "#22223a" }}
-      >
-        <div className="container">
-          <h1 className="fw-light text-white mb-3">The Rick and Morty</h1>
-        </div>
-      </header>
-      <div className="container pb-5">
+      <Header />
+      <div className="container-fluid pb-5 text-white px-5">
         <div className="d-flex gap-2 align-content-center my-3">
           <Link
-            style={{ cursor: "pointer", textDecoration: "none", color: "#000" }}
+            style={{ cursor: "pointer", textDecoration: "none", color: "#fff" }}
             to={"/"}
           >
             <svg
@@ -47,14 +40,6 @@ export default function Episodio() {
         <hr />
 
         <div className="row">
-          {/* <div className="col-md-3">
-            <img
-              className="img-fluid"
-              src="https://rickandmortyapi.com/api/character/avatar/361.jpeg"
-              alt=""
-            />
-          </div> */}
-
           <div className="col-md-9">
             <h3 className="my-3">Detalhes do Episódio</h3>
             <p>
@@ -79,8 +64,8 @@ export default function Episodio() {
             data.episode.characters.map((item) =>{
               console.log(item)
               return (
-                <div className="col-lg-4 col-sm-6 mb-4">
-                  <div className="card h-100">
+                <div className="col-lg-3 col-sm-6 mb-4">
+                  <div className="card" style={{height: '90%'}}>
                     <img className="card-img-top" src={item.image} alt="" />
                     <div className="card-body">
                       <h4 className="card-title">

@@ -1,8 +1,8 @@
 import "./style.css";
 import { Link } from "react-router-dom";
 import IconCard from "../../assets/icons/iconCard";
-import favoritoOff from "../../assets/favorito-off.png";
-import favoritoOn from "../../assets/favorito-on.png";
+import IconFavoriteOff from "../../assets/favoriteOff.svg";
+import IconFavoriteOn from "../../assets/favoriteOn.svg";
 
 
 export default function Card({
@@ -14,8 +14,7 @@ export default function Card({
   episodioId = 'teste',
 }) {
   return (
-    <div className="col-xl-3 col-md-6 mb-4">
-      <div className="card border-0 shadow p-3 mb-2">
+    <div className="card border-0 shadow p-3 mb-2">
         <div className="d-flex justify-content-between">
           <div className="d-flex flex-row align-items-center">
             <div className="icon">
@@ -30,7 +29,7 @@ export default function Card({
               <span>{temporada}</span>
             </div> */}
             <img
-              src={favorito ? favoritoOn : favoritoOff}
+              src={favorito ? IconFavoriteOn : IconFavoriteOff}
               alt="favorito"
               width={28}
               height={28}
@@ -60,6 +59,5 @@ export default function Card({
           </Link>
         </div>
       </div>
-    </div>
   );
 }
