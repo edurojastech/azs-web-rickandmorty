@@ -1,18 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
-import TodosEpisodios from "../pages/TodosEpisodios";
 import Episodio from "../pages/EpisodioDetails";
-import Intro from "../pages/Intro";
+import Episodios from "../pages/Episodios";
 
 const routes = createBrowserRouter([
   {
     path: "/",
-    element: <Intro />,
+    element: <Episodios />,
   },
-
-  // {
-  //   path: "/all",
-  //   element: <TodosEpisodios />
-  // },
 
   {
     path: "/episodio/:id",

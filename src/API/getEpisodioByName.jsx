@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
-export const getEpisodes = (season = '', name = '') => gql`
+export const getEpisodesByName = (name) => gql`
   query {
-    episodes(filter: { episode: "${season}", name: "${name}" }) {
+    episodes(filter: { name: "${name}" }) {
       results {
         id
         name
@@ -11,8 +11,12 @@ export const getEpisodes = (season = '', name = '') => gql`
         characters {
           id
           name
+          image
         }
       }
     }
   }
 `
+
+
+
