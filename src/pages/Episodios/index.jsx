@@ -1,7 +1,7 @@
 import "./styles.css";
 import { useQuery } from "@apollo/client";
 import { getEpisodes } from "../../API/getEpisodios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import formatarParaBrasil from "../../utils/fortamarData";
 import Card from "../../components/Card";
 import Header from "../../components/Header";
@@ -11,11 +11,21 @@ export default function Episodios() {
   const [temporada, setTemporada] = useState("");
   const [pesquisa, setPesquisa] = useState("");
   const { data, loading, error } = useQuery(getEpisodes(temporada));
+  const [listIds, setListIds] = useState([]);
 
-  function pesquisarEpisodio (ep) {
-    alert(ep)
+  function favoritar(id) {
+    setListIds(prevList => {
+      if (prevList.includes(id)) {
+        return prevList.filter(item => item !== id); // remove
+      } else {
+        return [...prevList, id]; // adiciona
+      }
+    })
   }
 
+  useEffect(() => {
+    console.log(listIds)
+  }, [listIds])
   return (
     <main>
       <Header>
@@ -33,7 +43,7 @@ export default function Episodios() {
             <span 
               class="input-group-text" 
               id="basic-addon1"
-              onClick={() => pesquisarEpisodio(pesquisa)}
+              // onClick={() => pesquisarEpisodio(pesquisa)}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -77,12 +87,14 @@ export default function Episodios() {
           return (
             <div className="col-xl-3">
               <Card
+                favorito={listIds.includes(ep.id)}
                 episodio={`Episódio ${index + 1}`}
                 nomeEpisodio={ep.name}
                 quantidadePersonagens={ep.characters.length}
                 dataLancamento={formatarParaBrasil(ep.air_date)}
                 episodioId={ep.id}
                 temporada={temporada == "S01E" ? "Temporada 1" : "Temporada 2"}
+                favoritar={() => favoritar(ep.id)}
               />
             </div>
           );

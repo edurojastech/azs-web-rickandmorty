@@ -12,7 +12,9 @@ export default function Card({
   dataLancamento,
   quantidadePersonagens,
   episodioId = 'teste',
+  favoritar
 }) {
+  
   return (
     <div className="card border-0 shadow p-3 mb-2">
         <div className="d-flex justify-content-between">
@@ -25,15 +27,13 @@ export default function Card({
             </div>
           </div>
           <div className="d-flex pt-1">
-            {/* <div className="badge">
-              <span>{temporada}</span>
-            </div> */}
             <img
               src={favorito ? IconFavoriteOn : IconFavoriteOff}
               alt="favorito"
               width={28}
               height={28}
               style={{ cursor: "pointer" }}
+              onClick={favoritar}
             />
           </div>
         </div>
