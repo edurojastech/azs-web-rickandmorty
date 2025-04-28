@@ -48,6 +48,7 @@ export default function TodosEpisodios() {
                 nomeEpisodio={ep.name}
                 quantidadePersonagens={ep.characters.length}
                 dataLancamento={formatarParaBrasil(ep.air_date)}
+                episodioId={ep.id}
                 temporada={temporada == "S01E" ? "Temporada 1" : "Temporada 2"}
               />
             );

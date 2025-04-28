@@ -1,6 +1,5 @@
 import { gql } from "@apollo/client";
 
-// Função para criar a consulta dinamicamente
 export const getEpisodesBySeason = (season) => gql`
   query {
     episodes(filter: { episode: "${season}" }) {
@@ -12,7 +11,6 @@ export const getEpisodesBySeason = (season) => gql`
         characters {
           id
           name
-          image
         }
       }
     }

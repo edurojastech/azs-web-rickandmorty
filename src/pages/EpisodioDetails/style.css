@@ -1,0 +1,10 @@
+@media (max-width: 640px) {
+  .d-flex {
+    flex-direction: column !important;
+  }
+}
+
+div.img-fluid {
+  max-height: 100%;
+  height: 100%;
+}

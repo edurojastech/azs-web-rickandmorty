@@ -11,7 +11,7 @@ export default function Card({
   favorito = false,
   dataLancamento,
   quantidadePersonagens,
-  rotaEpisodio = '/episodio/teste',
+  episodioId = 'teste',
 }) {
   return (
     <div className="col-xl-3 col-md-6 mb-4">
@@ -53,8 +53,7 @@ export default function Card({
             </span>{" "}
           </div>
           <Link
-            to={rotaEpisodio}
-            target="_blank"
+            to={`/episodio/${episodioId}`}
             className="btn btn-dark btn-sm"
           >
             Ver detalhes do episodio
