@@ -76,7 +76,7 @@ export default function Episodios() {
   return (
     <main>
       <Header>
-        <div style={{ width: "25%" }}>
+        <div className="inputButtons">
           <div className="input-group mb-3">
             <input
               value={pesquisa}
@@ -93,7 +93,7 @@ export default function Episodios() {
             />
           </div>
 
-          <div className="d-flex gap-2 justify-content-center">
+          <div className="d-flex buttons">
             <button
               className="btn btn-light"
               onClick={() => {
@@ -107,7 +107,7 @@ export default function Episodios() {
               Favoritos
             </button>
           </div>
-          <div className="d-flex gap-2 justify-content-center mt-2">
+          <div className="d-flex buttons">
             <button
               className="btn btn-light"
               onClick={() => {
@@ -129,6 +129,7 @@ export default function Episodios() {
           </div>
         </div>
       </Header>
+      
       <div id="Cards" className="row mt-5 px-5">
         {loading ? (
           <div className="text-center">
@@ -162,6 +163,7 @@ export default function Episodios() {
           })
         )}
       </div>
+      
       <ToastContainer />
     </main>
   );

@@ -17,36 +17,34 @@ body {
   width: 540px;
   margin: auto;
 }
-
-.btn-light {
-  width: calc(100% / 3);
-  height: 20%;
-  font-size: 14px;
+.inputButtons {
+  width: 30%;
 }
 
-@media (max-width: 640px) {
+.btn-light {
+  width: calc(100% / 2);
+  height: 20%;
+  margin: 8px 4px;
+}
+
+@media (max-width: 800px) {
   .logo{
     width: 100%;
     margin: auto;
   }
-}
 
-.skeleton-card {
-  height: 250px;
-  background: linear-gradient(-90deg, #eeeeee34 0%, #dddddd 50%, #eeeeee 100%);
-  background-size: 400% 400%;
-  animation: pulse 1.2s ease-in-out infinite;
-  border-radius: 10px;
-}
+  .btn-light {
+    width: auto;
+    height: auto;
+    display: block;
+  }
 
-@keyframes pulse {
-  0% {
-    background-position: 0% 50%;
+  .inputButtons {
+    width: 80%;
   }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
+
+  .buttons {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
