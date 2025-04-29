@@ -13,12 +13,17 @@ export default function Episodios() {
   const [pesquisa, setPesquisa] = useState("");
   const [listIds, setListIds] = useState([]);
   const [episodiosData, setEpisodiosData] = useState([]);
-  const [typeData, setTypeData] = useState('episodes');
+  const [typeData, setTypeData] = useState("episodes");
+  const [loading, setLoading] = useState(true);
 
   function listarFavoritos() {
-    setTypeData('')
+    setTypeData("");
+    setLoading(true);
     getEpisodesFavoritos({ ids: listIds })
-      .then((data) => setEpisodiosData(data.data))
+      .then((data) => {
+        setEpisodiosData(data.data);
+        setLoading(false);
+      })
       .catch((err) => console.error(err));
   }
 
@@ -33,14 +38,18 @@ export default function Episodios() {
   }
 
   function listarTodos() {
-    setTypeData('episodes')
+    setLoading(true);
+    setTypeData("episodes");
     getEpisodes(temporada)
-      .then((data) => setEpisodiosData(data.data))
+      .then((data) => {
+        setEpisodiosData(data.data);
+        setLoading(false);
+      })
       .catch((err) => console.error(err));
   }
 
   useEffect(() => {
-    listarTodos()
+    listarTodos();
   }, [temporada]);
 
   return (
@@ -57,11 +66,7 @@ export default function Episodios() {
               aria-describedby="basic-addon1"
               onChange={(e) => setPesquisa(e.target.value)}
             />
-            <span
-              className="input-group-text"
-              id="basic-addon1"
-              // onClick={() => pesquisarEpisodio(pesquisa)}
-            >
+            <span className="input-group-text" id="basic-addon1">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -76,10 +81,13 @@ export default function Episodios() {
           </div>
 
           <div className="d-flex gap-2 justify-content-center">
-            <button className="btn btn-light" onClick={()=>{
-              setTemporada("")
-              listarTodos()
-            }}>
+            <button
+              className="btn btn-light"
+              onClick={() => {
+                setTemporada("");
+                listarTodos();
+              }}
+            >
               Todos os Episódios
             </button>
             <button className="btn btn-light" onClick={listarFavoritos}>
@@ -90,8 +98,8 @@ export default function Episodios() {
             <button
               className="btn btn-light"
               onClick={() => {
-                setTemporada("S01E")
-                setTypeData('episodes')
+                setTemporada("S01E");
+                setTypeData("episodes");
               }}
             >
               Temporada 1
@@ -99,8 +107,8 @@ export default function Episodios() {
             <button
               className="btn btn-light"
               onClick={() => {
-                setTemporada("S02E")
-                setTypeData('episodes')
+                setTemporada("S02E");
+                setTypeData("episodes");
               }}
             >
               Temporada 2
@@ -109,31 +117,37 @@ export default function Episodios() {
         </div>
       </Header>
       <div id="Cards" className="row mt-5 px-5">
-        {(typeData === "episodes"
-          ? episodiosData?.episodes?.results
-          : episodiosData?.episodesByIds
-        )?.map((ep, index) => {
-          return (
-            <div className="col-xl-3" key={ep?.id}>
-              <Card
-                favorito={listIds?.includes(ep.id)}
-                episodio={`Episódio ${index + 1}`}
-                nomeEpisodio={ep.name}
-                quantidadePersonagens={ep?.characters.length}
-                dataLancamento={formatarParaBrasil(ep?.air_date)}
-                episodioId={ep?.id}
-                temporada={
-                  temporada === "S01E"
-                    ? "Temporada 1"
-                    : temporada === "S02E"
-                    ? "Temporada 2"
-                    : ""
-                }
-                favoritar={() => favoritar(ep?.id)}
-              />
-            </div>
-          );
-        })}
+        {loading ? (
+          <div className="text-center">
+            <Loader />
+          </div>
+        ) : (
+          (typeData === "episodes"
+            ? episodiosData?.episodes?.results
+            : episodiosData?.episodesByIds
+          )?.map((ep, index) => {
+            return (
+              <div className="col-xl-3" key={ep?.id}>
+                <Card
+                  favorito={listIds?.includes(ep.id)}
+                  episodio={`Episódio ${index + 1}`}
+                  nomeEpisodio={ep.name}
+                  quantidadePersonagens={ep?.characters.length}
+                  dataLancamento={formatarParaBrasil(ep?.air_date)}
+                  episodioId={ep?.id}
+                  temporada={
+                    temporada === "S01E"
+                      ? "Temporada 1"
+                      : temporada === "S02E"
+                      ? "Temporada 2"
+                      : ""
+                  }
+                  favoritar={() => favoritar(ep?.id)}
+                />
+              </div>
+            );
+          })
+        )}
       </div>
     </main>
   );
