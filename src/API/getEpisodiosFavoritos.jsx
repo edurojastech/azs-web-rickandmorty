@@ -1,3 +1,5 @@
+import { CallFecth } from "./fetch";
+
 export async function getEpisodesFavoritos ({ ids }) {
   let query
   const idsFormatted = ids.map((id) => Number(id)).join(",");
@@ -19,12 +21,5 @@ export async function getEpisodesFavoritos ({ ids }) {
     `,
   };
 
-  const response = await fetch("https://rickandmortyapi.com/graphql", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(query),
-  })
-  return await response.json();
+  return  CallFecth(query).then(item => item)
 }

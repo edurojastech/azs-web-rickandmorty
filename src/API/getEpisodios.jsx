@@ -1,3 +1,5 @@
+import { CallFecth } from "./fetch";
+
 export const getEpisodes = async (season = "", name = "") => {
   let query = {
     query : `
@@ -17,13 +19,5 @@ export const getEpisodes = async (season = "", name = "") => {
       }
     `
   }
-  
-  const response = await fetch("https://rickandmortyapi.com/graphql", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(query),
-  })
-  return await response.json();
+  return  CallFecth(query).then(item => item)
 }

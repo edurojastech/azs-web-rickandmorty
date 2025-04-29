@@ -1,22 +1,26 @@
-import { gql } from "@apollo/client";
+import { CallFecth } from "./fetch";
 
-export const getEpisodesByName = (name) => gql`
-  query {
-    episodes(filter: { name: "${name}" }) {
-      results {
-        id
-        name
-        episode
-        air_date
-        characters {
-          id
-          name
-          image
+export async function getEpisodesByName (name) {
+  let query
+  query = {
+    query: `
+      query {
+        episodes(filter: { name: "${name}" }) {
+          results {
+            id
+            name
+            episode
+            air_date
+            characters {
+              id
+              name
+              image
+            }
+          }
         }
       }
-    }
-  }
-`
+    `,
+  };
 
-
-
+  return  CallFecth(query).then(item => item)
+}
