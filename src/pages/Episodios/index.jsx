@@ -7,6 +7,7 @@ import formatarParaBrasil from "../../utils/fortamarData";
 import Card from "../../components/Card";
 import Header from "../../components/Header";
 import Loader from "../../components/Loader";
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function Episodios() {
   const [temporada, setTemporada] = useState("");
@@ -17,14 +18,19 @@ export default function Episodios() {
   const [loading, setLoading] = useState(true);
 
   function listarFavoritos() {
-    setTypeData("");
-    setLoading(true);
-    getEpisodesFavoritos({ ids: listIds })
+    if(listIds.length > 0) {
+      setTypeData("")
+      setLoading(true)
+      getEpisodesFavoritos({ ids: listIds })
       .then((data) => {
         setEpisodiosData(data.data);
         setLoading(false);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err))
+    } else {
+      const notify = () => toast("Nenhum favorito selecionado!")
+      notify()
+    }
   }
 
   function favoritar(id) {
@@ -149,6 +155,8 @@ export default function Episodios() {
           })
         )}
       </div>
+
+      <ToastContainer />
     </main>
   );
 }
