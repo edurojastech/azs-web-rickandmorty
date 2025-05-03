@@ -5,7 +5,7 @@ Aplicação web feita com **React.js** (via **Vite**) que consome a API pública
 🔗 **Acesse o projeto online:**  
 👉 [https://rickandmorty-appjs.netlify.app](https://rickandmorty-appjs.netlify.app)
 
-![Rick and Morty App]([https://rickandmorty-appjs.netlify.app/assets/logo-CdNPMMJf.png])) <!-- Substitua pela imagem correta, se tiver -->
+![Rick and Morty App](https://rickandmorty-appjs.netlify.app/assets/logo-CdNPMMJf.png) <!-- Substitua pela imagem correta, se tiver -->
 
 ---
 
@@ -39,3 +39,11 @@ npm run dev
 
 # Acesse no navegador:
 http://localhost:5173
+```
+
+## 🔍 Funcionalidades
+
+- ✅ **Listagem de personagens** com imagem, nome, status, espécie e localização  
+- 🔎 **Busca por nome**  
+- 🚀 **Integração com GraphQL** via `fetch`  
+- 📱 **Layout responsivo** adaptado para diferentes dispositivos
