@@ -2,7 +2,7 @@
   border: 1px solid gray;
   border-radius: 10px;
   height: 280px;
-  width: 100%;
+  width: 95%;
   text-decoration: none;
   background-color: rgba(9, 28, 32, 0.701);
   color: #fff;
@@ -64,4 +64,10 @@
 
 .btn-dark:hover {
   background-color: #22223a !important;
+}
+
+@media (max-width: 800px) {
+  #card-header, #card-icon {
+    flex-direction: row !important;
+  }
 }

@@ -17,8 +17,8 @@ export default function Card({
   
   return (
     <div className="card border-0 shadow p-3 mb-2">
-        <div className="d-flex justify-content-between">
-          <div className="d-flex flex-row align-items-center">
+        <div className="d-flex justify-content-between" id="card-header">
+          <div className="d-flex flex-row align-items-center" id="card-icon">
             <div className="icon">
               <IconCard />
             </div>

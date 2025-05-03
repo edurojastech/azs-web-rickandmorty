@@ -14,8 +14,8 @@ export default function Episodio() {
       { loading && <div className="text-center"><Loader /></div> }
       {error && <p>Erro: {error.message}</p>}
       {!loading && (
-        <div className="container-fluid pb-5 text-white px-5">
-          <div className="d-flex gap-2 align-content-center my-3">
+        <div className="container-fluid pb-5 text-white px-5 paddingCustom">
+          <div className="d-flex gap-2 align-content-center my-3" id="titleCapitulo">
             <Link
               style={{
                 cursor: "pointer",
@@ -43,7 +43,7 @@ export default function Episodio() {
             </h2>
           </div>
           <hr />
-          <div className="row">
+          <div className="row px-3">
             <div className="col-md-9">
               <h3 className="my-3">Detalhes do Episódio</h3>
               <p>
@@ -55,7 +55,7 @@ export default function Episodio() {
             </div>
           </div>
 
-          <h3 className="my-4">Personagens</h3>
+          <h3 className="my-4 mx-3">Personagens</h3>
           <div className="row">
             {data?.episode?.characters?.map((item) => {
               console.log(item);

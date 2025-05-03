@@ -130,7 +130,7 @@ export default function Episodios() {
         </div>
       </Header>
       
-      <div id="Cards" className="row mt-5 px-5">
+      <div id="Cards" className="row mt-5">
         {loading ? (
           <div className="text-center">
             <Loader />

@@ -13,6 +13,10 @@ body {
   overflow-x: hidden;
 }
 
+#Cards {
+  padding-inline: 80px !important;
+}
+
 .logo{
   width: 540px;
   margin: auto;
@@ -37,6 +41,7 @@ body {
     width: auto;
     height: auto;
     display: block;
+    font-size: 12px;
   }
 
   .inputButtons {
@@ -46,5 +51,9 @@ body {
   .buttons {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  #Cards {
+    padding-inline: 24px !important;
   }
 }
