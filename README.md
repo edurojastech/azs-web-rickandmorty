@@ -20,7 +20,7 @@ Aplicação web feita com **React.js** (via **Vite**) que consome a API pública
 - ⚛️ [React.js](https://reactjs.org/) — Construção da interface
 - 🔮 [GraphQL](https://graphql.org/) — Consulta de dados estruturada
 - 🌐 `fetch` — API nativa para requisições HTTP
-- 💅 CSS (ou TailwindCSS / styled-components, se usado)
+- 💅 [Bootstrap](https://getbootstrap.com/) - Para formatação de estilos CSS e responsividade
 
 ---
 
