@@ -42,7 +42,9 @@ export default function Episodios() {
       } else {
         return [...prevList, id]; // adiciona
       }
-    });
+    })
+
+    
   }
 
   function listarTodos() {
@@ -70,8 +72,13 @@ export default function Episodios() {
   }
 
   useEffect(() => {
-    listarTodos();
-  }, [temporada]);
+    listarTodos()
+  }, [temporada])
+
+  useEffect(() => {
+    listarTodos()
+    localStorage.setItem('listIds', JSON.stringify(listIds))
+  }, [temporada, listIds]);
 
   return (
     <main>
